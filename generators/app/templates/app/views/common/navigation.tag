@@ -13,7 +13,7 @@
             <yield/>
         </div>
     <script>
-        var navigation = require('../../common/navigation.js')
+        var navigation = require('../../js/common/navigation.js')
         this.on('mount update', function() {
             navigation.init()
         })

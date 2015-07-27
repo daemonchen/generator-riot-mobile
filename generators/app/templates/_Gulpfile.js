@@ -7,12 +7,12 @@ var buffer = require('vinyl-buffer');
 var browserify = require('browserify');
 
 var WEB_PORT = 9000;
-var APP_DIR = '<%= appPath %>/app';
-var DIST_DIR = '<%= appPath %>/dist';
+var APP_DIR = 'app';
+var DIST_DIR = 'dist';
 
-var SCRIPTS_DEST = '<%= appPath %>/dist/js/';
-var CSS_DEST = '<%= appPath %>/dist/css/';
-var IMAGE_DEST = '<%= appPath %>/dist/img/';
+var SCRIPTS_DEST = 'dist/js/';
+var CSS_DEST = 'dist/css/';
+var IMAGE_DEST = 'dist/img/';
 
 function errorHandler(error) {
     console.log(error.toString());
@@ -36,28 +36,28 @@ gulp.task('watch-browserify', function(cb){
 })
 
 gulp.task('watch', function() {
-    gulp.watch('<%= appPath %>/app/index.html', ['watch-index']);
-    gulp.watch('<%= appPath %>/bower_components/**/*.css', ['watch-vender-css']);
-    gulp.watch('<%= appPath %>/app/css/*.css', ['watch-css']);
-    gulp.watch('<%= appPath %>/app/js/lib/*.js', ['watch-lib-js']);
-    gulp.watch(['<%= appPath %>/app/**/*.js', '<%= appPath %>/app/js/**/*.tag'], ['watch-browserify']);
+    gulp.watch('app/index.html', ['watch-index']);
+    gulp.watch('bower_components/**/*.css', ['watch-vender-css']);
+    gulp.watch('app/css/*.css', ['watch-css']);
+    gulp.watch('app/js/lib/*.js', ['watch-lib-js']);
+    gulp.watch(['app/**/*.js', 'app/js/**/*.tag'], ['watch-browserify']);
 });
 
 gulp.task('clean', function() {
-    return gulp.src(['<%= appPath %>/dist'], {
+    return gulp.src(['dist'], {
             read: false
         })
         .pipe($.clean());
 });
 
 gulp.task('index', function(){
-    return gulp.src('<%= appPath %>/app/index.html')
+    return gulp.src('app/index.html')
         .pipe($.minifyHtml())
         .pipe(gulp.dest(DIST_DIR));
 })
 
 gulp.task('vender-css', function(){
-    return gulp.src(['<%= appPath %>/bower_components/animate.css/animate.min.css'])
+    return gulp.src(['bower_components/animate.css/animate.min.css'])
         .pipe($.concat('vendor.css'))
         .pipe(gulp.dest(CSS_DEST))
         .pipe($.minifyCss())
@@ -66,7 +66,7 @@ gulp.task('vender-css', function(){
 })
 
 gulp.task('css', function(){
-    return gulp.src('<%= appPath %>/app/css/*.css')
+    return gulp.src('app/css/*.css')
         .pipe($.concat('style.css'))
         .pipe(gulp.dest(CSS_DEST))
         .pipe($.minifyCss())
@@ -75,7 +75,7 @@ gulp.task('css', function(){
 })
 
 gulp.task('lib-js', function(){
-    return gulp.src('<%= appPath %>/app/js/lib/*.js')
+    return gulp.src('app/js/lib/*.js')
         .pipe($.concat('lib.js'))
         .pipe(gulp.dest(SCRIPTS_DEST))
         .pipe($.uglify())
@@ -89,7 +89,7 @@ gulp.task('reload', function(){
 
 gulp.task('browserify', function(){
     return browserify({
-            entries: ['<%= appPath %>/app/js/index.js']
+            entries: ['app/js/index.js']
         })
         .transform(riotify) // pass options if you need
         .bundle().on('error', errorHandler)
@@ -102,7 +102,7 @@ gulp.task('browserify', function(){
 })
 
 gulp.task('manifest', function() {
-    return gulp.src(['<%= appPath %>/dist/**/*'])
+    return gulp.src(['dist/**/*'])
         .pipe($.manifest({
             hash: true,
             preferOnline: true,

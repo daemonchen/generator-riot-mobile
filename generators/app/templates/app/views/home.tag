@@ -6,20 +6,22 @@
             <p><a href="/">刷新下试试~</a></p>
         </div>
         <section class="home-group" if="{ !isLoading }">
-            <div class="item"></div>
+            <div class="item">
+                <div class="title">n-button</div>
+                <n-button title="按钮文案" clazz="btn btn-black"></n-button>
+            </div>
         </section>
         <n-tips></n-tips>
     </section>
     <bottom-menu controller="home"></bottom-menu>
     <script>
         var self = this
-        var jsloader = require('../common/jsloader.js')
-        var notification = require('../common/notification.js')
-        var navigation = require('../common/navigation.js')
-        var auth = require('../common/auth.js')
-        var INTERFACE = require('../common/interface.js')
-        var iscrollUtil = require('../common/iscrollUtil.js')
-        var DB = require('../common/store.js')
+        var jsloader = require('../js/common/jsloader.js')
+        var notification = require('../js/common/notification.js')
+        var navigation = require('../js/common/navigation.js')
+        var auth = require('../js/common/auth.js')
+        var INTERFACE = require('../js/common/interface.js')
+        var DB = require('../js/common/store.js')
         this.on('mount',function(){
             self.eventBind()
         })
