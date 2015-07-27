@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+<%= appPath %>/bower_components
+node_modules/
+dist
+*.log
+**/.*
+!.bowerrc
+!.editorconfig
+!.gitignore
+!.npmignore
+!.versions

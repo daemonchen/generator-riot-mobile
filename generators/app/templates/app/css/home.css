@@ -1,0 +1,5 @@
+.home{ min-height: 100%; }
+.home .empty{text-align: center; }
+.home .empty img{ padding-top: 20%; }
+.home .empty .tips{ padding-top: 10%; color: #bdbdbd; font-size: 14px; }
+.home .empty a{ color: #64D3F1; line-height: 24px; }

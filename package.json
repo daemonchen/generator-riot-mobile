@@ -1,0 +1,24 @@
+{
+  "name": "generator-riot-mobile",
+  "version": "1.0.0",
+  "description": "some riot UI components samples",
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator",
+    "riotjs",
+    "riot",
+    "custom components"
+  ],
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "scott chen",
+  "license": "BSD",
+  "dependencies": {
+    "yeoman-generator": "^0.17.7",
+    "yosay": "^1.0.5"
+  }
+}
